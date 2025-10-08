@@ -1,6 +1,6 @@
 
 import { Blogs } from '@subhrat/blog-common';
-import { User, Eye, Plus, Calendar } from 'lucide-react';
+import { User, Eye,  Calendar } from 'lucide-react';
 
 
 const BlogList = ({blogs,loading , onNavigate, onViewBlog }: {  blogs: Blogs;loading:boolean; onNavigate: (page: "blogs" | "view" | "edit" | "create") => void; onViewBlog: (id: number) => void }) => {

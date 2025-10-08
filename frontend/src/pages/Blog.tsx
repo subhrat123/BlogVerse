@@ -18,7 +18,7 @@ const BlogsPage = () => {
     const fetchBlogs = async () => {
       try {
         const blogData: Blogs = await getAllBlogs();
-        const publishedBlogs = blogData.filter(blog => blog.published);
+        const publishedBlogs = blogData.filter(blog => blog.publish);
         setBlogs(publishedBlogs);
       } catch (error) {
         console.error('Failed to fetch blogs:', error);
@@ -32,7 +32,7 @@ const BlogsPage = () => {
   
   const [selectedBlogId, setSelectedBlogId] = useState<number | null>(null);
 
-  const handleViewBlog = (id: number) => {
+  const handleViewBlog = (id: number): void => {
     setSelectedBlogId(id);
     setCurrentPage('view');
   };

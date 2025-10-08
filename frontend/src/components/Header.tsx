@@ -1,6 +1,6 @@
 import { useState, useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { Menu, X, BookOpen, LogOut, User, PlusCircle } from 'lucide-react';
+import { Menu, X, LogOut, PlusCircle } from 'lucide-react';
 import { StoreContext } from '../store';
 
 const Header = () => {

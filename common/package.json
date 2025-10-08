@@ -1,0 +1,20 @@
+{
+  "name": "@subhrat/blog-common",
+  "version": "1.0.11",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "tsc": "^2.0.4",
+    "zod": "^4.1.8"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.2"
+  }
+}

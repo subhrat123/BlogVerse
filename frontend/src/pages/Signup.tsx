@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Eye, EyeOff, User, Mail, Lock, UserPlus, AlertCircle, CheckCircle } from 'lucide-react';
+import { StoreContext } from '../store';
+import { jwtDecode } from 'jwt-decode';
 
 // Type definitions
 interface FormData {
@@ -48,6 +50,7 @@ const SignupPage: React.FC = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [showPassword, setShowPassword] = useState<boolean>(false);
     const [message, setMessage] = useState<Message>({ type: '', text: '' });
+    const storeContext = useContext(StoreContext);
 
     const validateForm = (): FormErrors => {
         const newErrors: FormErrors = {};
@@ -114,8 +117,8 @@ const SignupPage: React.FC = () => {
         setMessage({ type: '', text: '' });
 
         try {
-            // Replace with your actual backend endpoint
-            const response = await fetch('http://127.0.0.1:8787/api/v1/user/signup', {
+            
+            const response = await fetch('https://blogverse.subhrat.workers.dev/api/v1/user/signup', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -126,7 +129,11 @@ const SignupPage: React.FC = () => {
             const data: ApiError & ApiSuccess = await response.json();
 
             if (response.ok) {
+                const decoded: { id: number; name: string; username: string; email: string; } = jwtDecode(data.token);
+                storeContext?.setToken(data.token);
+                storeContext?.setUser(decoded);
                 localStorage.setItem('token', data.token);
+                localStorage.setItem('user', JSON.stringify(decoded));
                 setMessage({
                     type: 'success',
                     text: 'Account created successfully! Please check your email for verification.'

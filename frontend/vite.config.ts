@@ -9,7 +9,7 @@ export default defineConfig({
     proxy: {
       // Proxy all requests starting with /api to your backend
       '/api': {
-        target: 'http://127.0.0.1:8787', // your backend port
+        target: 'https://blogverse.subhrat.workers.dev', // your backend port
         changeOrigin: true,
         secure: false, // only for HTTP dev
         // rewrite path if needed

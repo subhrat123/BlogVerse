@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@100xdevs/common-app": "^1.0.3",
-    "@subhrat/blog-common": "^1.0.11",
+    "@subhrat/blog-common": "^1.0.12",
     "jwt-decode": "^4.0.0",
     "lucide-react": "^0.544.0",
     "react": "^18.2.0",

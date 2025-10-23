@@ -18,7 +18,8 @@ const BlogsPage = () => {
     const fetchBlogs = async () => {
       try {
         const blogData: Blogs = await getAllBlogs();
-        const publishedBlogs = blogData.filter(blog => blog.publish);
+        const publishedBlogs = blogData.filter(blog => blog.published);
+        console.log("Fetched published blogs:", publishedBlogs);
         setBlogs(publishedBlogs);
       } catch (error) {
         console.error('Failed to fetch blogs:', error);

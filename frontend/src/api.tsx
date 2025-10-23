@@ -6,7 +6,8 @@ import { BlogCreate } from '@subhrat/blog-common';
 // import { BlogUpdate } from '@subhrat/blog-common';
 
 export const getAllBlogs = async (): Promise<Blogs> => {
-  const response = await fetch('/api/v1/blog/bulk',
+  console.log("API URL:", import.meta.env.VITE_API_URL);
+  const response = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/blog/bulk`,
     { method: 'GET' ,headers: { 'Content-Type': 'application/json' } }
   );
   if (!response.ok) {
@@ -16,7 +17,7 @@ export const getAllBlogs = async (): Promise<Blogs> => {
 };
 
 export const getBlog = async (id: number): Promise<Blog> => {
-  const response = await fetch(`/api/v1/blog/${id}`, {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/blog/${id}`, {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' },
   });
@@ -28,7 +29,7 @@ export const getBlog = async (id: number): Promise<Blog> => {
 
 export const createBlog = async (title: string, content: string): Promise<BlogCreate> => {
     const token = localStorage.getItem('token');
-  const response = await fetch('/api/v1/blog/b1', {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/blog/b1`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'Authorization': `${token}` },
     body: JSON.stringify({ title, content }),
@@ -41,7 +42,7 @@ export const createBlog = async (title: string, content: string): Promise<BlogCr
 
 export const updateBlog = async (id: number, title: string, content: string, published?: boolean): Promise<BlogCreate> => {
     const token = localStorage.getItem('token');
-  const response = await fetch(`/api/v1/blog/b1/${id}`, {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/blog/b1/${id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json', 'Authorization': `${token}`},
     body: JSON.stringify({ title, content, published }),
@@ -56,7 +57,7 @@ export const updateBlog = async (id: number, title: string, content: string, pub
 
 export const getUserBlogs = async ():Promise<Blogs>=>{
     const token = localStorage.getItem('token');
-  const response = await fetch(`/api/v1/user/me/blogs`, {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/user/me/blogs`, {
     method: 'GET',
     headers: { 'Content-Type': 'application/json', 'Authorization': `${token}` },
   });

@@ -5,13 +5,25 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
-    port: 5173, 
+    port: 5173,
     proxy: {
       '/api': {
-        target: 'https://blogverse.subhrat.workers.dev', 
+        target: 'https://blogverse.subhrat.workers.dev',
         changeOrigin: true,
-        secure: false, 
       },
     },
+  },
+  build: {
+    outDir: 'dist',
+    sourcemap: false,
+    chunkSizeWarningLimit: 1000,
+  },
+  resolve: {
+    alias: {
+      '@': '/src',
+    },
+  },
+  preview: {
+    port: 4173,
   },
 })

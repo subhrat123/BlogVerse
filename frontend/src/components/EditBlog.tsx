@@ -18,7 +18,7 @@ const EditBlog = ({ blogId, onNavigate }: { blogId: number; onNavigate: (page: "
         setBlog(blogData);
         setTitle(blogData?.title || '');
         setContent(blogData?.content || '');
-        setIsPublished(blogData?.publish || false);
+        setIsPublished(blogData?.published || false);
       } catch (error) {
         console.error('Failed to fetch blog:', error);
       } finally {

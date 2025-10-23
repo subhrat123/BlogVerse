@@ -10,8 +10,7 @@ import bcrypt from 'bcryptjs';
 export const userRouter = new Hono<{
     Bindings: {
         DB_URL: string;
-        JWT_SECRET: string;
-        NODE_ENV: string;
+        JWT_SECRET: string
     }
 }>();
 

@@ -37,7 +37,7 @@ blogRouter.use('/b1/*',async(c,next)=>{
 //TODO: pagination
 blogRouter.get('/bulk', async(c) => {
 const prisma = new PrismaClient({
-		datasourceUrl: c.env?.DB_URL	,
+		datasourceUrl: c.env?.DB_URL,
 	}).$extends(withAccelerate());
 	
 	const posts = await prisma.post.findMany({
@@ -62,6 +62,7 @@ blogRouter.post('/b1', async (c) => {
 				message: "inpute invalid",
 			})
 		}
+		
 	const post = await prisma.post.create({
 		data: {
 			title: body.title,
